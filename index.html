@@ -37,24 +37,9 @@
             <div class="todo-container my-4">
 
                 <ul>
-                    <li>
-                        todo
-                        <i class="fa-solid fa-xmark"></i>
-                    </li>
-                    <li>
-                        todo
-                        <i class="fa-solid fa-xmark"></i>
-                    </li>
-                    <li>
-                        todo
-                        <i class="fa-solid fa-xmark"></i>
-                    </li>
-                    <li>
-                        todo
-                        <i class="fa-solid fa-xmark"></i>
-                    </li>
-                    <li>
-                        todo
+                    <li v-for="todo in todos"
+                        :class="{'cancelled' : todo.taskDone === true}">
+                        {{todo.what}}
                         <i class="fa-solid fa-xmark"></i>
                     </li>
                 </ul>

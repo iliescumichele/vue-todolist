@@ -39,7 +39,7 @@ h1{
 }
 
 .todo-container{
-    background-color: #52b9fa;
+    background-color: #46b0f1;
     border-radius: 15px;
     padding: 10px ;
 }
@@ -65,4 +65,8 @@ h1{
     color: rgb(0, 0, 0);
     background-color: #0083d48f;
     border-radius: 5px;
+}
+
+.cancelled{
+    text-decoration: line-through;
 }
