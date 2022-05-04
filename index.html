@@ -29,18 +29,29 @@
             <h1 class="my-4">TO DO LIST</h1>
 
             <div class="new-todo">
-                <input type="text" placeholder="Scrivi nuovo to-do"></input>
-                <button type="button" class="btn">Aggiungi</button>
+                <input @keyup.enter="addTodo" v-model.trim="newTodo" type="text" placeholder="Scrivi nuovo to-do"></input>
+                <button @click="addTodo" type="button" class="btn">Aggiungi</button>
             </div>
 
 
             <div class="todo-container my-4">
 
-                <ul>
-                    <li v-for="todo in todos"
+                <ul >
+                    <li v-for="(todo, index) in todos"
                         :class="{'cancelled' : todo.taskDone === true}">
-                        {{todo.what}}
-                        <i class="fa-solid fa-xmark"></i>
+                        {{todo.text}}
+                        <i @click="removeTodo(index)"
+                            class="fa-solid fa-xmark">
+                        </i>
+                    </li>
+                </ul>
+                <h2 v-if="todos.length === 0" class="text-center my-4">Non hai nulla da fare </h2>
+
+                <ul>
+                    <li v-for="(todo, index) in deletedTodos"
+                        :class="{'cancelled' : todo.taskDone === true}">
+                        {{todo.text}}
+                        <i  class="fa-solid fa-xmark"></i>
                     </li>
                 </ul>
             </div>

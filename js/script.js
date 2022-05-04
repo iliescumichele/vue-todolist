@@ -29,21 +29,48 @@ const app = new Vue({
     data: {
         todos:[
             {
-                what: 'Compra i pomodori',
-                taskDone: true,
-            },
-            {
-                what: 'Esercitati a scrivere codice',
+                text: 'Compra i pomodori',
                 taskDone: false,
             },
             {
-                what: 'Leggi 10pag di un libro',
-                taskDone: true,
-            },
-            {
-                what: 'Compra le zucchine',
+                text: 'Esercitati a scrivere codice',
                 taskDone: false,
             },
-        ]
-    }
+            {
+                text: 'Leggi 10pag di un libro',
+                taskDone: false,
+            },
+            {
+                text: 'Compra le zucchine',
+                taskDone: false,
+            },
+        ],
+
+        deletedTodos:[
+
+        ],
+
+        //var utilizzata per aggiungere una nuova task alla lista
+        newTodo: '',
+    },
+
+    methods: {
+        //funzione per aggiungere una nuova task alla lista
+        addTodo(){
+            const nuovoTodo = {
+                 text: this.newTodo,
+                 taskDone: false,
+            };
+            this.todos.push(nuovoTodo);
+            //resetto la var per il prossimo task
+            this.newTodo = '';
+        },
+
+
+        removeTodo(index){
+            this.todos[index].taskDone = !this.todos[index].taskDone;
+            this.deletedTodos.push(this.todos[index]);
+            this.todos.splice(index, 1);
+        }
+    },
 })
